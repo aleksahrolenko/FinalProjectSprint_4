@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class ForWhomAboutRentPage {
     private WebDriver webDriver;
+    public final static String URL = "https://qa-scooter.praktikum-services.ru/";
 
     public ForWhomAboutRentPage(WebDriver webDriver) {
 
@@ -152,7 +153,7 @@ public class ForWhomAboutRentPage {
     }
 
     // Проверяем что появилось окно с сообщением об успешном создании заказа.
-    public boolean OrderCompleted() {
+    public boolean orderCompleted() {
 
         return webDriver.findElement(Completed).getText().contains("Заказ оформлен");
     }

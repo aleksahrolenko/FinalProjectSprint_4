@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class HomePage {
 
     private WebDriver webDriver;
+    public final static String URL = "https://qa-scooter.praktikum-services.ru/";
 
     public HomePage(WebDriver webDriver){
 
@@ -14,26 +15,26 @@ public class HomePage {
     }
 
     //Верхняя кнопка "Заказать"
-    private final By OrderUpButton = By.className("Button_Button__ra12g");
+    private final By orderUpButton = By.className("Button_Button__ra12g");
 
     //Нижняя кнопка "Заказать"
-    private final By OrderBottomButton = By.xpath(".//div[@class = 'Home_FinishButton__1_cWm']/button");
+    private final By orderBottomButton = By.xpath(".//div[@class = 'Home_FinishButton__1_cWm']/button");
 
     // Скролл к нижней кнопке "Заказать"
     public void scrollToBottomButton() {
-        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView();", webDriver.findElement(OrderBottomButton));
+        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView();", webDriver.findElement(orderBottomButton));
     }
 
     // Метод кликает на верхнюю кнопку "Заказать"
     public void clickToOrderUpButton() {
 
-        webDriver.findElement(OrderUpButton).click();
+        webDriver.findElement(orderUpButton).click();
     }
 
     // Метод кликает на нижнюю кнопку "Заказать"
     public void clickToOrderBottomButton() {
 
-        webDriver.findElement(OrderBottomButton).click();
+        webDriver.findElement(orderBottomButton).click();
     }
 
 }

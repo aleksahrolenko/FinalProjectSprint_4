@@ -1,5 +1,6 @@
 package edu.praktikum.sprint4;
 
+import edu.praktikum.sprint4.pom.HomePage;
 import edu.praktikum.sprint4.pom.ImportantQuestionsPage;
 import org.junit.After;
 import org.junit.Before;
@@ -10,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.net.URL;
 import java.time.Duration;
 import static org.junit.Assert.assertEquals;
 
@@ -35,17 +37,17 @@ public class ImportantQuestionsTest {
 
     @Before
     public void setup() {
-        //webDriver = new ChromeDriver();
-        webDriver = new FirefoxDriver();
+        webDriver = new ChromeDriver();
+        //webDriver = new FirefoxDriver();
         webDriver.manage().timeouts().implicitlyWait(Duration.of(3, SECONDS));
-        webDriver.get("https://qa-scooter.praktikum-services.ru/");
+        webDriver.get(HomePage.URL);
     }
 
     @Test
     public void questionList(){
         ImportantQuestionsPage importantQuestionsPage = new ImportantQuestionsPage(webDriver);
         importantQuestionsPage.scrollAndClickListAnswers(number);
-        assertEquals("Текст не соответствует", ImportantQuestionsPage.answers[number], importantQuestionsPage.answersListText(number));
+        assertEquals("Текст не соответствует", ImportantQuestionsPage.ANSWERS[number], importantQuestionsPage.answersListText(number));
     }
 
     @After

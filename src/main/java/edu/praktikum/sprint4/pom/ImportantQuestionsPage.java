@@ -7,13 +7,14 @@ import org.openqa.selenium.WebDriver;
 public class ImportantQuestionsPage {
 
     private WebDriver webDriver;
+
     public ImportantQuestionsPage(WebDriver webDriver){
 
         this.webDriver = webDriver;
     }
 
     //Массив корректных ответов из списка "Вопросы о важном"
-    public static final String[] answers = {"Сутки — 400 рублей. Оплата курьеру — наличными или картой.",
+    public static final String[] ANSWERS = {"Сутки — 400 рублей. Оплата курьеру — наличными или картой.",
                                             "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.",
                                             "Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.",
                                             "Только начиная с завтрашнего дня. Но скоро станем расторопнее.",
@@ -24,7 +25,7 @@ public class ImportantQuestionsPage {
     };
 
     //Массив локаторов вопросов из списка "Вопросы о важном"
-    private  final  By[] locatorsQuestions = {By.xpath(".//div[@class='accordion']/div[1]"),
+    private  final  By[] LOCATORS_QUESTIONS = {By.xpath(".//div[@class='accordion']/div[1]"),
                                               By.xpath(".//div[@class='accordion']/div[2]"),
                                               By.xpath(".//div[@class='accordion']/div[3]"),
                                               By.xpath(".//div[@class='accordion']/div[4]"),
@@ -35,7 +36,7 @@ public class ImportantQuestionsPage {
     };
 
     //Массив локаторов ответов из списка "Вопросы о важном"
-    private  final  By[] locatorsAnswers = {By.xpath(".//div[@id='accordion__panel-0']/p"),
+    private  final  By[] LOCATORS_ANSWERS = {By.xpath(".//div[@id='accordion__panel-0']/p"),
                                             By.xpath(".//div[@id='accordion__panel-1']/p"),
                                             By.xpath(".//div[@id='accordion__panel-2']/p"),
                                             By.xpath(".//div[@id='accordion__panel-3']/p"),
@@ -47,14 +48,14 @@ public class ImportantQuestionsPage {
 
     //Скролл до списка "Вопросы о важном"
     public void scrollListAnswers(int locator) {
-        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView();", webDriver.findElement(locatorsQuestions[locator]));
+        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView();", webDriver.findElement(LOCATORS_QUESTIONS[locator]));
 
     }
 
     //Метод для клика на поле списка "Вопросы о важном"
     public void clickListAnswers(int locator) {
 
-        webDriver.findElement(locatorsQuestions[locator]).click();
+        webDriver.findElement(LOCATORS_QUESTIONS[locator]).click();
     }
 
     public void scrollAndClickListAnswers(int locator){
@@ -65,7 +66,7 @@ public class ImportantQuestionsPage {
     //Метод возвращает текст ответов из списка "Вопросы о важном"
     public String answersListText(int number){
 
-        return webDriver.findElement(locatorsAnswers[number]).getText();
+        return webDriver.findElement(LOCATORS_ANSWERS[number]).getText();
     }
 
 

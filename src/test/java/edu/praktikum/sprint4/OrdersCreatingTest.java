@@ -14,6 +14,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.time.Duration;
 
+import static edu.praktikum.sprint4.pom.HomePage.URL;
 import static java.time.temporal.ChronoUnit.SECONDS;
 import static org.junit.Assert.assertTrue;
 
@@ -21,24 +22,24 @@ import static org.junit.Assert.assertTrue;
 public class OrdersCreatingTest {
     private WebDriver webDriver;
 
-    private  final String FIRSTNAME;
-    private final String SURNAME;
-    private final String ADDRESS;
-    private final String METROSTATION;
-    private final String TELEPHONE;
-    private final String DELIVERYDATE;
-    private final String RENTTIME;
-    private final String COMMENT;
+    private  final String firstName;
+    private final String secondName;
+    private final String address;
+    private final String metroStation;
+    private final String telephone;
+    private final String deliveryDate;
+    private final String rentTime;
+    private final String comment;
 
     public OrdersCreatingTest(String firstName, String surName, String address, String metroStation, String telephone, String deliveryDate, String rentTime, String comment){
-        this.FIRSTNAME = firstName;
-        this.SURNAME = surName;
-        this.ADDRESS = address;
-        this.METROSTATION = metroStation;
-        this.TELEPHONE = telephone;
-        this.DELIVERYDATE = deliveryDate;
-        this.RENTTIME = rentTime;
-        this.COMMENT = comment;
+        this.firstName = firstName;
+        this.secondName = surName;
+        this.address = address;
+        this.metroStation = metroStation;
+        this.telephone = telephone;
+        this.deliveryDate = deliveryDate;
+        this.rentTime = rentTime;
+        this.comment = comment;
     }
 
     @Parameterized.Parameters(name = "Тестовый набор данных: {0} {1} {2} {3} {4} {5} {6} {7}")
@@ -55,7 +56,7 @@ public class OrdersCreatingTest {
         webDriver = new ChromeDriver();
         //webDriver = new FirefoxDriver();
         webDriver.manage().timeouts().implicitlyWait(Duration.of(3, SECONDS));
-        webDriver.get("https://qa-scooter.praktikum-services.ru/");
+        webDriver.get(URL);
     }
 
     @Test
@@ -66,12 +67,12 @@ public class OrdersCreatingTest {
 
         ForWhomAboutRentPage forWhomAboutRentPage = new ForWhomAboutRentPage(webDriver);
         forWhomAboutRentPage.closeCookieButton();
-        forWhomAboutRentPage.orderPageFirstInput(FIRSTNAME, SURNAME, ADDRESS, METROSTATION, TELEPHONE);
+        forWhomAboutRentPage.orderPageFirstInput(firstName, secondName, address, metroStation, telephone);
         forWhomAboutRentPage.tapOnBlackCheckBox();
-        forWhomAboutRentPage.orderPageSecondInput(DELIVERYDATE, RENTTIME, COMMENT);
+        forWhomAboutRentPage.orderPageSecondInput(deliveryDate, rentTime, comment);
         forWhomAboutRentPage.tapToButtonYes();
 
-        assertTrue("Не отображается окно с сообщением об успешном создании заказа.", forWhomAboutRentPage.OrderCompleted());
+        assertTrue("Не отображается окно с сообщением об успешном создании заказа.", forWhomAboutRentPage.orderCompleted());
     }
     @Test
     public void testOrderWithUpButton(){
@@ -80,12 +81,12 @@ public class OrdersCreatingTest {
 
         ForWhomAboutRentPage forWhomAboutRentPage = new ForWhomAboutRentPage(webDriver);
         forWhomAboutRentPage.closeCookieButton();
-        forWhomAboutRentPage.orderPageFirstInput(FIRSTNAME, SURNAME, ADDRESS, METROSTATION, TELEPHONE);
+        forWhomAboutRentPage.orderPageFirstInput(firstName, secondName, address, metroStation, telephone);
         forWhomAboutRentPage.tapOnGreyCheckBox();
-        forWhomAboutRentPage.orderPageSecondInput(DELIVERYDATE, RENTTIME, COMMENT);
+        forWhomAboutRentPage.orderPageSecondInput(deliveryDate, rentTime, comment);
         forWhomAboutRentPage.tapToButtonYes();
 
-        assertTrue("Не отображается окно с сообщением об успешном создании заказа.", forWhomAboutRentPage.OrderCompleted());
+        assertTrue("Не отображается окно с сообщением об успешном создании заказа.", forWhomAboutRentPage.orderCompleted());
     }
     @After
     public  void tearDown(){
