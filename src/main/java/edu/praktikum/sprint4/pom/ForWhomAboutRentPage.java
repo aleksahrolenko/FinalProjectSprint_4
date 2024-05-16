@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 
 public class ForWhomAboutRentPage {
     private WebDriver webDriver;
-    public final static String URL = "https://qa-scooter.praktikum-services.ru/";
 
     public ForWhomAboutRentPage(WebDriver webDriver) {
 
@@ -56,7 +55,7 @@ public class ForWhomAboutRentPage {
     private By cookie = By.className("App_CookieButton__3cvqF");
 
     //Окно - "Заказ оформлен"
-    private final By Completed = By.xpath(".//div[starts-with(@class, 'Order_ModalHeader')]");
+    private final By completed = By.xpath(".//div[starts-with(@class, 'Order_ModalHeader')]");
 
     // Метод вводид значение в поле "Имя"
     public void inputToFirstName(String firstName) {
@@ -155,7 +154,7 @@ public class ForWhomAboutRentPage {
     // Проверяем что появилось окно с сообщением об успешном создании заказа.
     public boolean orderCompleted() {
 
-        return webDriver.findElement(Completed).getText().contains("Заказ оформлен");
+        return webDriver.findElement(completed).getText().contains("Заказ оформлен");
     }
 
     public void closeCookieButton() {

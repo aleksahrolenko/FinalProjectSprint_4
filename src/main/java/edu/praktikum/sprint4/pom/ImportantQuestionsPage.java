@@ -25,7 +25,7 @@ public class ImportantQuestionsPage {
     };
 
     //Массив локаторов вопросов из списка "Вопросы о важном"
-    private  final  By[] LOCATORS_QUESTIONS = {By.xpath(".//div[@class='accordion']/div[1]"),
+    private  final  By[] locatorsQuestions = {By.xpath(".//div[@class='accordion']/div[1]"),
                                               By.xpath(".//div[@class='accordion']/div[2]"),
                                               By.xpath(".//div[@class='accordion']/div[3]"),
                                               By.xpath(".//div[@class='accordion']/div[4]"),
@@ -36,7 +36,7 @@ public class ImportantQuestionsPage {
     };
 
     //Массив локаторов ответов из списка "Вопросы о важном"
-    private  final  By[] LOCATORS_ANSWERS = {By.xpath(".//div[@id='accordion__panel-0']/p"),
+    private  final  By[] locatorsAnswers = {By.xpath(".//div[@id='accordion__panel-0']/p"),
                                             By.xpath(".//div[@id='accordion__panel-1']/p"),
                                             By.xpath(".//div[@id='accordion__panel-2']/p"),
                                             By.xpath(".//div[@id='accordion__panel-3']/p"),
@@ -48,14 +48,14 @@ public class ImportantQuestionsPage {
 
     //Скролл до списка "Вопросы о важном"
     public void scrollListAnswers(int locator) {
-        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView();", webDriver.findElement(LOCATORS_QUESTIONS[locator]));
+        ((JavascriptExecutor) webDriver).executeScript("arguments[0].scrollIntoView();", webDriver.findElement(locatorsQuestions[locator]));
 
     }
 
     //Метод для клика на поле списка "Вопросы о важном"
     public void clickListAnswers(int locator) {
 
-        webDriver.findElement(LOCATORS_QUESTIONS[locator]).click();
+        webDriver.findElement(locatorsQuestions[locator]).click();
     }
 
     public void scrollAndClickListAnswers(int locator){
@@ -66,7 +66,7 @@ public class ImportantQuestionsPage {
     //Метод возвращает текст ответов из списка "Вопросы о важном"
     public String answersListText(int number){
 
-        return webDriver.findElement(LOCATORS_ANSWERS[number]).getText();
+        return webDriver.findElement(locatorsAnswers[number]).getText();
     }
 
 

@@ -56,7 +56,7 @@ public class OrdersCreatingTest {
         webDriver = new ChromeDriver();
         //webDriver = new FirefoxDriver();
         webDriver.manage().timeouts().implicitlyWait(Duration.of(3, SECONDS));
-        webDriver.get(URL);
+        webDriver.get(HomePage.URL);
     }
 
     @Test
